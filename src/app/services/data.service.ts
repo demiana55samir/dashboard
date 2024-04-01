@@ -37,15 +37,15 @@ export class DataService {
         // let x =await this.firestore.doc(`products/${productId}`).delete();
       // console.log(x);
 
-  async deleteProduct(productId: string): Promise<void> {
-    try {
-      await deleteDoc(doc(this.firestore , "products", productId));
-      console.log('Product deleted successfully');
-    } catch (error) {
-      console.error('Error deleting product:', error);
-      throw error; 
-    }
-  }
+  // async deleteProduct(productId: string): Promise<void> {
+  //   try {
+  //     await deleteDoc(doc(this.firestore , "products", productId));
+  //     console.log('Product deleted successfully');
+  //   } catch (error) {
+  //     console.error('Error deleting product:', error);
+  //     throw error; 
+  //   }
+  // }
  /***************************************/
  addAdmin(admin :IAdmins){
   admin.id = this.firestore.createId();

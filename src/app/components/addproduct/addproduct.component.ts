@@ -80,18 +80,18 @@ export class AddproductComponent {
     this.router.navigate(['/edit-product',id,product]);
   }
 
-  deleteProduct(productId: string): void {
-    if (confirm("Are you sure you want to delete this product?")) {
-      this.data.deleteProduct(productId).then(() => {
-        console.log('product deleted successfully');
-        // this.data.deleteProduct(productId);
-        this.getAllProducts();
+  // deleteProduct(productId: string): void {
+  //   if (confirm("Are you sure you want to delete this product?")) {
+  //     this.data.deleteProduct(productId).then(() => {
+  //       console.log('product deleted successfully');
+  //       // this.data.deleteProduct(productId);
+  //       this.getAllProducts();
 
-      }).catch(error => {
-        console.error('Error deleting product:', error);
-      });
-    }
-  }
+  //     }).catch(error => {
+  //       console.error('Error deleting product:', error);
+  //     });
+  //   }
+  // }
 
   // async deleteProduct(products: string, productId: string): Promise<void> {
   //   try {
