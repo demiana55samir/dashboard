@@ -10,10 +10,15 @@ import {AngularFireAuthModule} from '@angular/fire/compat/auth';
 import {AngularFireDatabaseModule} from '@angular/fire/compat/database';
 import {AngularFirestoreModule} from '@angular/fire/compat/firestore';
 import { firebaseConfig } from './Firebase/firebase';
+import { firebaseProviders } from './firebase.config';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
+    firebaseProviders,
+    provideHttpClient(
+      withFetch()
+    ),
     provideClientHydration(),
     provideHttpClient(withFetch()),
     importProvidersFrom([

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "expenses-6b4ec": {
+      "hosting": {
+        "dashboard": [
+          "expenses-6b4ec"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "expenses-6b4ec"
+  }
+}

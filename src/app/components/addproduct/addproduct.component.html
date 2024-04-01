@@ -1,19 +1,71 @@
-<div class="container">
-    <div class="mb-4 d-flex ">
-        <button type="button" class="btn btn-primary m-5"> Add Product</button>
-    </div>
-    <div class="d-flex flex-column gap-3">
-        <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <h2 class="fw-bold text-success">$150</h2>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <div class="d-flex gap-2">
-                <button class="btn btn-sm btn-success" > Edit </button>
-                <button class="btn btn-sm btn-danger"> Remove </button>
+<div class="container-fluid align-items-center d-flex justify-content-center ml-5">
+  <div class="row">
+      <div class="col-md-12 mt-2">
+          <div class="card p-3 shadow">
+              <h5 class="text-danger text-center"> Product List</h5>
+              <div class="card-body">
+                  <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th scope="col"> Name</th>
+                          <th scope="col">Price</th>
+                          <th scope="col">CatId</th>
+                          <th scope="col">Quantity</th>
+                          <th scope="col">Delete</th>
+                          <th scope="col">Edit</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let prd of products">
+                          <td >{{prd.name}}</td>
+                          <td>{{prd.price}}</td>
+                          <td>{{prd.catId}}</td>
+                          <td>{{prd.quantity}}</td>
+                          <td>
+                              <button class="btn btn-outline-danger"
+                               (click)="deleteProduct(prd.id)">Delete</button>
+
+                          </td>
+                          <td>
+                            <button class="btn btn-outline-success"
+                             (click)="updateProduct(prd.id,prd)">Edit</button>
+
+                        </td>
+                        </tr>
+                      </tbody>
+                    </table>
               </div>
-            </div>
           </div>
-    </div>
+      </div>
+      <div class="col-md-12 mt-5">
+          <div class="card border-0 shadow p-3">
+              <div class="form-floating mb-3 tetx-center">
+                  <h5 class="text-center text-warning">Add Product</h5>
+              </div>
+                  <div class="form-floating mb-3">
+                      <input type="text" class="form-control" id="name"
+                       name="name" [(ngModel)]="name">
+                      <label for="name"> Name</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                      <input type="text" class="form-control" 
+                      id="price" name="price" [(ngModel)]="price">
+                      <label for="price">Price</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                      <input type="text" class="form-control"
+                       id="catId" name="catId" [(ngModel)]="catId">
+                      <label for="catId">Catigory Id</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                      <input type="text" class="form-control"
+                       id="quantity" name="quantity" [(ngModel)]="quantity">
+                      <label for="quantity">Quantity </label>
+                  </div>
+                  <button type="button" class="btn btn-outline-success" (click)="addProduct()">Add product</button>
+          </div>
+      </div>
+   
+  </div>
+
 </div>

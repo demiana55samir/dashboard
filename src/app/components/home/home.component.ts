@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { ChartModule } from 'angular-highcharts';
 import { Chart } from 'angular-highcharts';
+import { AddproductComponent } from '../addproduct/addproduct.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterOutlet, RouterLink,ChartModule ],
+  imports: [RouterOutlet, RouterLink,ChartModule ,AddproductComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
