@@ -14,7 +14,6 @@ import { Router } from '@angular/router';
   styleUrl: './edit-product.component.css',
 })
 export class EditProductComponent implements OnInit {
-
   product: Iproduct = {
     name: '',
     id: '',
@@ -22,12 +21,11 @@ export class EditProductComponent implements OnInit {
     quantity: '',
     catId: '',
     catName: '',
-    imageUrl: ''
+    imageUrl: '',
   };
 
-  params: any; 
-  productId:string='';
-
+  params: any;
+  productId: string = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -35,25 +33,32 @@ export class EditProductComponent implements OnInit {
     private data: DataService
   ) {}
 
-   ngOnInit(): void {
-    this.params = this.route.snapshot.params; 
-    this.getProduct(this.params.id); 
+  ngOnInit(): void {
+    this.params = this.route.snapshot.params;
+    this.productId = this.params.id;
+    this.getProduct(this.params.id);
   }
 
   getProduct(productId: string): void {
-    this.data.getProduct(productId).subscribe((product) => {
-      this.product = product as Iproduct;
-    }, error => {
-      console.error('Error fetching product:', error);
-    });
+    this.data.getProduct(productId).subscribe(
+      (product) => {
+        this.product = product as Iproduct;
+      },
+      (error) => {
+        console.error('Error fetching product:', error);
+      }
+    );
   }
 
   updateProduct(): void {
-    this.data.updateProduct(this.productId as string,this.params).then(() => {
-      console.log('Product updated successfully');
-      this.router.navigate(['/addproduct']);
-    }).catch(error => {
-      console.error('Error updating product:', error);
-    });
+    this.data
+      .updateProduct(this.productId as string, this.product)
+      .then(() => {
+        console.log('Product updated successfully');
+        this.router.navigate(['/addproduct']);
+      })
+      .catch((error) => {
+        console.error('Error updating product:', error);
+      });
   }
 }

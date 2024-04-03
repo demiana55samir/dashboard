@@ -3,69 +3,63 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Iproduct } from '../models/iproducts';
 import { IAdmins } from '../models/iAdmins';
 import { Observable } from 'rxjs';
-import { doc, deleteDoc } from "firebase/firestore";
-
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DataService {
-
-  constructor(private firestore : AngularFirestore) { }
+  constructor(private firestore: AngularFirestore) {}
 
   getProducts(): Observable<any[]> {
-    return this.firestore.collection('products').valueChanges({ idField: 'productId' });
+    return this.firestore
+      .collection('products')
+      .valueChanges({ idField: 'productId' });
   }
 
   getProduct(productId: string): Observable<any> {
-    return this.firestore.doc(`products/${productId}`).valueChanges();
+    return this.firestore.collection('/products').doc(productId).valueChanges();
   }
 
-  getAllProucts(){
+  getAllProucts() {
     return this.firestore.collection('/prducts').snapshotChanges();
   }
   getAllProducts(): Observable<Iproduct[]> {
-   return this.firestore.collection<Iproduct>('/products').valueChanges();
- }
-  addProduct(product :Iproduct){
-    product.id = this.firestore.createId();
-    return this.firestore.collection('/products').add(product);
- }
-  updateProduct(productId: string, product: any): Promise<void> {
-    return this.firestore.doc(`products/${productId}`).update(product);
+    return this.firestore.collection<Iproduct>('/products').valueChanges();
   }
-        // let x =await this.firestore.doc(`products/${productId}`).delete();
-      // console.log(x);
+  addProduct(product: Iproduct) {
+    product.id = this.firestore.createId();
+    return this.firestore.collection('/products').doc(product.id).set(product);
+  }
+  async updateProduct(productId: string, product: any): Promise<void> {
+    return this.firestore
+      .collection(`/products`)
+      .doc(productId)
+      .update(product);
+  }
 
-  // async deleteProduct(productId: string): Promise<void> {
-  //   try {
-  //     await deleteDoc(doc(this.firestore , "products", productId));
-  //     console.log('Product deleted successfully');
-  //   } catch (error) {
-  //     console.error('Error deleting product:', error);
-  //     throw error; 
-  //   }
-  // }
- /***************************************/
- addAdmin(admin :IAdmins){
-  admin.id = this.firestore.createId();
-  return this.firestore.collection('/admins').add(admin);
-}
+  async deleteProduct(productId: string) {
+    await this.firestore.collection('/products').doc(productId).delete();
+  }
 
- getAllAdmins(){
-  return this.firestore.collection('/admins').snapshotChanges();
-}
+  /***************************************/
+  addAdmin(admin: IAdmins) {
+    admin.id = this.firestore.createId();
+    return this.firestore.collection('/admins').add(admin);
+  }
 
-deleteAdmin(admin :IAdmins){
-  return this.firestore.doc('/admins'+admin.id).delete();
-}
+  getAllAdmins() {
+    return this.firestore.collection('/admins').snapshotChanges();
+  }
 
-updateAdmin(admin :IAdmins){
-return this.firestore.doc('/products'+admin.id).update(admin);
-}
+  deleteAdmin(admin: IAdmins) {
+    return this.firestore.doc('/admins' + admin.id).delete();
+  }
 
-getAdmin(id:string){
-  return this.firestore.doc('/admins'+id).valueChanges();
- }
+  updateAdmin(admin: IAdmins) {
+    return this.firestore.doc('/products' + admin.id).update(admin);
+  }
 
+  getAdmin(id: string) {
+    return this.firestore.doc('/admins' + id).valueChanges();
+  }
 }
