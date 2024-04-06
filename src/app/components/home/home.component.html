@@ -1,13 +1,90 @@
-<div class="container-fluid">
-    <div class="charts">
-        <div class="pie" [chart]="pieChart">
+<div class="container-fluid mt-3  ">
+  <div class="row gap-3 mb-3 ">
+    <div
+      class="rounded-sm p-2 "
+      style="
+        width: 230px;
+        height: 120px;
+        background-image: linear-gradient(
+          to right,
+          rgba(107, 214, 252),
+          rgba(48, 95, 236)
+        );
+        border-radius: 20px;
+      "
+    >
+      <span style="font-weight: 500; font-size: 18px">Total Orders</span>
+      <div class="d-flex space" style="justify-content: space-between;">
+        <img src="..//src/assets/orders.png" class="bg-opacity-10" width="80px" alt="orders" />
+        <span class="" style="font-weight: 400; font-size: 50px">4,500</span>
+      </div>
+    </div>
+    <div
+      class="rounded-sm p-2 "
+      style="
+        width: 230px;
+        height: 120px;
+        background-image: linear-gradient(
+          to right,
+          rgba(239, 94, 122),
+          rgba(211, 83, 133)
+        );
+        border-radius: 20px;
+      "
+    >
+      <span style="font-weight: 500; font-size: 18px">Total Visitors</span>
+      <div class="d-flex space" style="justify-content: space-between;">
+        <img src="..//src/assets/products.png" width="86.77px" alt="orders" />
+        <span class="" style="font-weight: 400; font-size: 50px">15,750</span>
+      </div>
+    </div>
+    <div
+      class="rounded-sm p-2 "
+      style="
+        width: 230px;
+        height: 120px;
+        background-image: linear-gradient(
+          to right,
+          rgba(214 , 35, 254),
+          rgba(165, 48, 242 )
+        );
+        border-radius: 20px;
+      "
+    >
+      <span style="font-weight: 500; font-size: 18px">Total Products</span>
+      <div class="d-flex space" style="justify-content: space-between;">
+        <img src="..//src/assets/orders.png" width="86.77px" alt="orders" />
+        <span class="" style="font-weight: 400; font-size: 50px">9,500</span>
+      </div>
+    </div>
+    <div
+      class="rounded-sm p-2 "
+      style="
+        width: 230px;
+        height: 120px;
+        background-image: linear-gradient(
+          to right,
+          rgba(107, 214, 252),
+          rgba(48, 95, 236)
+        );
+        border-radius: 20px;
+      "
+    >
+      <span style="font-weight: 500; font-size: 18px">Total Revenue</span>
+      <div class="d-flex space" style="justify-content: space-between;">
+        <img src="..//src/assets/money.png" width="80px" alt="orders" />
+        <span class="" style="font-weight: 400; font-size: 50px">8,500</span>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="charts container ">
+    <div class="pie" [chart]="pieChart">
     
         </div>
         <div class="line" [chart]="lineChart">
         </div>
-       
-    </div>
-    <!-- <div>
+  </div> -->
+  <!-- <div>
         <app-addproduct></app-addproduct>
     </div> -->
 </div>
